@@ -1,0 +1,11 @@
+<div>
+    <%#=link_to('SHOW USERS',role_users_path, class:'nav-link',remote: true)%>
+</div>
+<div class="container" id="user_details">
+  <div class="filter">
+    <div class="form-group">
+      <%= select_tag :role_id, options_for_select(Role.role_status.collect {|p| [ p.name.titleize, p.id ]},{include_blank:"select Role"}), :class=>"form-control" %>
+    </div>
+  </div>
+  <%= render 'table'%>
+</div>

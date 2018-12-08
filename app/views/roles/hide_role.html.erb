@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="">
+    <%= form_with url: update_roles_path ,local: true do |form| %>
+      <% @roles.each do |role| %>
+        <div class="form-check">
+          <%= check_box_tag 'status[]', role.id %>
+          <%= form.label :status, role.name %>
+        </div>
+      <% end %>
+      <div class="form-group">
+        <%= form.submit :submit, class:'btn btn-primary'%>
+      </div>
+    <% end %>
+  </div>
+</div>
