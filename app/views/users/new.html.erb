@@ -1,5 +1,9 @@
 <div class="container-fluid">
-  <%= form_with(url: create_user_path, local: true) do |f| %>
+  <%= link_to "Show Users", user_list_path, class: "add", remote: true ,method: 'POST'%>
+<div id="user_list">
+
+</div>
+  <%= form_with(model: @user, local: true) do |f| %>
     <div class="form-group row">
       <div class="col-sm-4">
         <label>First Name</label>
@@ -19,12 +23,10 @@
       </div>
     </div>
     <div class="form-group row">
-      <%=f.fields_for :user_roles do |ff|%>
       <div class="col-sm-4">
         <label>Select Role</label>
-        <%= ff.select :role_id, options_for_select(Role.role_status.collect {|p| [ p.name.titleize, p.id ]}), { }, { class: "form-control  chosen-select", id: "role_status", multiple: true } %>
+        <%= f.select :role_id, options_for_select(Role.role_status.collect {|p| [ p.name.titleize, p.id ]}), { }, { class: "form-control  chosen-select", id: "role_status", multiple: true } %>
       </div>
-      <% end %>
     </div>
     <div class="form-group row">
       <div class="col-sm-4">
