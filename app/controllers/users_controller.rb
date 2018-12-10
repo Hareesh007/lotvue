@@ -21,11 +21,11 @@ class UsersController < ApplicationController
   end
 
   def ajax_user
-   @users = User.unassigned_users
+   @users = User.unassigned_users.paginate(page: params[:page], per_page: 1)
   end
 
   def user_filter
-   @users = User.user_filter(params[:role_id])
+   @users = User.user_filter(params[:role_id]).paginate(page: params[:page], per_page: 1)
   end
 
   def user_role

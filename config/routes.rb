@@ -9,6 +9,6 @@ Rails.application.routes.draw do
   match '/update_roles', to: 'roles#update_roles', as: :update_roles,via: [:get,:post]
   post '/create_user',to: 'users#create', as: :create_user
   get '/role_users', to: 'users#user_role', as: :role_users
-  post '/user_list', to: 'users#ajax_user', as: :user_list
-  post '/user_filter', to: 'users#user_filter', as: :user_filter
+  match '/user_list', to: 'users#ajax_user', as: :user_list, via: [:get,:post]
+  match '/user_filter', to: 'users#user_filter', as: :user_filter, via: [:get,:post]
 end
